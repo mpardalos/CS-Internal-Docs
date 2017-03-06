@@ -17,6 +17,13 @@
 \usepackage{mdframed}
 \usepackage{listings}
 \usepackage{minted}
+    \setminted{
+        bgcolor=LightGray,
+        linenos,
+        frame=lines,
+        framesep=5mm,
+        fontsize=\footnotesize
+    }
 \usepackage[svgnames]{xcolor}
 
 \setlength{\parskip}{1em}
@@ -106,7 +113,7 @@ the variables and constraints described. For my program I decided on the followi
 \end{itemize}
 %
 
-\inputminted[fontsize=\footnotesize]{python}{solver_listing.py}
+\inputminted{python}{solver_listing.py}
 
 \printbibliography[type=software,title={Libraries}]
 \end{document}
