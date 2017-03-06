@@ -13,7 +13,8 @@ def possible_timetables(students: List[List[Subject]], periods_per_week: int) ->
     # We need a dict to be able to access each period's variable by name
     period_variables = {
         period_name: solver.IntVar(0, periods_per_week - 1, period_name)
-        for period_name in period_names}
+        for period_name in period_names
+    }
 
     for student in students:
         # Get the list of all the periods for the student's subjects
@@ -21,7 +22,7 @@ def possible_timetables(students: List[List[Subject]], periods_per_week: int) ->
             itertools.chain(*[subject.period_names for subject in student])
         )
 
-        # Filter the list of all periods to get only those that the student 
+        # Filter the list of all period variables to get only those that the student 
         # is a part of
         student_period_variables = [
             period_var
@@ -32,12 +33,17 @@ def possible_timetables(students: List[List[Subject]], periods_per_week: int) ->
         # All of the student's periods must be scheduled at different times
         solver.AddConstraint(solver.AllDifferent(student_period_variables))
 
+    # Pass the parameters to the solver and set its options
     db = solver.Phase(list(period_variables.values()),
                       solver.CHOOSE_MIN_SIZE_LOWEST_MAX,
                       solver.ASSIGN_CENTER_VALUE)
+    # Begin the search for solutions
     solver.NewSearch(db)
 
+    # Provide the solutions as a generator, so that we can get multiple possible 
+    # solutions from each call of the function.
     while solver.NextSolution():
+        #
         subject_map = defaultdict(list)
         for period_name, period_variable in period_variables.items():
             for subject in subjects:
