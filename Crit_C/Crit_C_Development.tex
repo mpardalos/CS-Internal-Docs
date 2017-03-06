@@ -126,6 +126,34 @@ line 4, since we are in a \texttt{while} loop in the generator), and the cycle c
 When either a \texttt{return} statement or (in this case) the end of the generator is hit,
 the loop stops.
 
+\subsection{Loading and parsing the students' file}
+
+The data the program needs is stored in an Excel file with the following structure:
+
+\includegraphics[width=\textwidth]{data_file_structure.png}
+
+In the program, the Datastore class (diagram below) is responsible for loading
+the file and providing the data in a usable format.
+%
+\begin{table}[H]
+    \centering
+    \def\arraystretch{1.5}
+    \begin{tabular}{|l r|}
+        \hline
+        \multicolumn{2}{|c|}{Datastore}\\
+        \hline
+        \hline
+        openpyxl.worksheet.Worksheet &worksheet\\
+        \hline
+        generator[Subject] &getSubjects()\\
+        Dict[str, List[Subject]] &getSubjects()\\
+        \hline
+    \end{tabular}
+    \label{table:datastore}
+\end{table}
+%
+
+
 \subsection{Solver}
 
 The timetables are created using a technique called \emph{constraint programming}.
