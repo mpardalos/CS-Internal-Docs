@@ -6,6 +6,7 @@
     citestyle=authortitle,
     autocite=footnote
 ]{biblatex}
+    \addbibresource{libraries.bib}
 \usepackage[
     colorlinks,
     linkcolor=black,
@@ -21,16 +22,6 @@
 \setlength{\parskip}{1em}
 \setlength{\parindent}{0em}
 
-\addbibresource{libraries.bib}
-
-\lstdefinestyle{custompy}{
-    language=Python,
-    basicstyle=\footnotesize,
-    keywordstyle=\bfseries\color{Green},
-    identifierstyle=\color{Blue},
-    commentstyle=\it\color{gray}
-}
-
 \title{Criterion C - Development}
 \author{}
 \date{}
@@ -40,77 +31,83 @@
 
 \section{Techniques Used}
 
-    \begin{enumerate}
-        \item Object oriented programming
-        \item Graphical User Interface using the PyQt framework
-        \item Constraint Programming
-    \end{enumerate}
+\begin{enumerate}
+\item Object oriented programming
+\item Graphical User Interface using the PyQt framework
+\item Constraint Programming
+\end{enumerate}
 
 \section{Structure}
-    \subsection*{Flowchart}
-        \begin{figure}[H]
-            \centering
-            \includegraphics[width=\textwidth]{system_flowchart}
-        \end{figure}
-    \subsection*{Program Structure}
 
-    \begin{figure}[H]
-        \label{fig:dir_structure}
-        \includegraphics[width=\textwidth]{directory_structure}
-    \end{figure}
+\subsection*{Flowchart}
 
-    In \autoref{fig:dir_structure}, .py files contain python source code, main.ui contains
-    qt xml markup, which is contain the structure of the GUI windows, and README.md is a
-    contains basic information about the program and my contact information.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{system_flowchart}
+\end{figure}
+
+\subsection*{Program Structure}
+
+\begin{figure}[H]
+    \label{fig:dir_structure}
+    \includegraphics[width=\textwidth]{directory_structure}
+\end{figure}
+
+In \autoref{fig:dir_structure}, .py files contain python source code, main.ui contains qt
+xml markup, which is contain the structure of the GUI windows, and README.md is a contains
+basic information about the program and my contact information.
 
 \section{Tools \& Software}
-    The application was made in Python 3, making use of a number of different software
-    libraries.  
 
-    The application was written using the Neovim \autocite{neovim} editor. The core solver
-    of the application --- responsible for creating the timetables, given the students and
-    subjects --- was made using Google's ortools \autocite{ortools} library, which was
-    chosen for its speed and reputable developer.  For reading the Excel spreadsheets, the
-    openpyxl\autocite{openpyxl} library was used, since it is the most used --- and
-    therefore best supported --- library for this purpose. The GUI of the program was made
-    using the PyQt framework as well as Qt Designer, for graphically designing the user
-    interface. The framework was chosen for its stability as well as for being compatible
-    with multiple operating systems. This was particularly important since I was developing
-    the program on Arch Linux while the client would eventually run it on Windows 7.
+The application was made in Python 3, making use of a number of different software
+libraries.  
 
-    
+The application was written using the Neovim \autocite{neovim} editor. The core solver of
+the application --- responsible for creating the timetables, given the students and subjects
+--- was made using Google's ortools \autocite{ortools} library, which was chosen for its
+speed and reputable developer.  For reading the Excel spreadsheets, the
+openpyxl\autocite{openpyxl} library was used, since it is the most used --- and therefore
+best supported --- library for this purpose. The GUI of the program was made using the PyQt
+framework as well as Qt Designer, for graphically designing the user interface. The
+framework was chosen for its stability as well as for being compatible with multiple
+operating systems. This was particularly important since I was developing the program on
+Arch Linux while the client would eventually run it on Windows 7.
+
+
 \section{Solver}
-    The timetables are created using a technique called \emph{constraint programming}.
-    Generally, this is a method of finding possible values for a number of variables given a
-    set of values that each can take as well as a set of constraints for these variables,
-    e.g. that two can't take the same value or that they all have to add up to a specific
-    number.  This is achieved by assigning values to the variables until either a valid
-    solution is reached or no other values can be set without breaking a constraint, in
-    which case the variables which created the problem are unset and the algorithm continues
-    from an earlier state were there were no problems.
 
-    In order to use this technique it is necessary to model the problem being addressed
-    using the variables and constraints described. For my program I decided on the following
-    model:
-    \begin{itemize}
-        \item Each period to be present on the timetable is represented as one variable,
-            taking an integer value between 0 and 19 (0 == Monday, first period, 19 ==
-            Friday, last period). So, taking Computer Science HL as an example, which is
-            taught for 3 periods each week, there will be three variables:
-            \textit{ComputerScienceHL-p1}, \textit{ComputerScienceHL-p2} and
-            \textit{ComputerScienceHL-p3}, each taking a value between 0 and 19.
+The timetables are created using a technique called \emph{constraint programming}.
+Generally, this is a method of finding possible values for a number of variables given a set
+of values that each can take as well as a set of constraints for these variables, e.g. that
+two can't take the same value or that they all have to add up to a specific number.  This is
+achieved by assigning values to the variables until either a valid solution is reached or no
+other values can be set without breaking a constraint, in which case the variables which
+created the problem are unset and the algorithm continues from an earlier state were there
+were no problems.
 
-        \item Each student (or teacher) is modelled as a constraint which does not allow the
-            periods the person has to be present on to be on the same spot on the timetable,
-            i.e. take the same numerical value. So, if, for example, Alice were to have
-            taken Business SL and Computer Science HL, there would be a constraint, that
-            would not allow the variables \textit{ComputerScienceHL-p1},
-            \textit{ComputerScienceHL-p2},  \textit{ComputerScienceHL-p3} and
-            \textit{BusinessSL-p1}, \textit{BusinessSL-p2} to take the same value.
-    \end{itemize}
+In order to use this technique it is necessary to model the problem being addressed using
+the variables and constraints described. For my program I decided on the following model:
+%
+\begin{itemize}
+    \item Each period to be present on the timetable is represented as one variable, taking
+        an integer value between 0 and 19 (0 == Monday, first period, 19 == Friday, last
+        period). So, taking Computer Science HL as an example, which is taught for 3 periods
+        each week, there will be three variables: \textit{ComputerScienceHL-p1},
+        \textit{ComputerScienceHL-p2} and \textit{ComputerScienceHL-p3}, each taking a value
+        between 0 and 19.
 
-    \inputminted[fontsize=\footnotesize]{python}{solver_listing.py}
-    
+    \item Each student (or teacher) is modelled as a constraint which does not allow the
+        periods the person has to be present on to be on the same spot on the timetable,
+        i.e. take the same numerical value. So, if, for example, Alice were to have taken
+        Business SL and Computer Science HL, there would be a constraint, that would not
+        allow the variables \textit{ComputerScienceHL-p1}, \textit{ComputerScienceHL-p2},
+        \textit{ComputerScienceHL-p3} and \textit{BusinessSL-p1}, \textit{BusinessSL-p2} to
+        take the same value.
+\end{itemize}
+%
+
+\inputminted[fontsize=\footnotesize]{python}{solver_listing.py}
+
 \printbibliography[type=software,title={Libraries}]
 \end{document}
 
