@@ -3,10 +3,11 @@
 \usepackage[a4paper, margin=1in]{geometry}
 \usepackage{graphicx}
 \usepackage[
+    defernumbers=true,
     citestyle=authortitle,
     autocite=footnote
 ]{biblatex}
-    \addbibresource{libraries.bib}
+    \addbibresource{bibliography.bib}
 \usepackage[
     colorlinks,
     linkcolor=black,
@@ -81,7 +82,51 @@ operating systems. This was particularly important since I was developing the pr
 Arch Linux while the client would eventually run it on Windows 7.
 
 
-\section{Solver}
+\section{How it works}
+
+\subsection{Generators}
+
+Generators are a feature of the python language that is used extensively in my program and
+so, knowledge of them is necessary to understand the function of the program. 
+
+"Generators functions allow you to declare a function that behaves like an iterator, i.e. it
+can be used in a for loop."\autocite{generators}. When a function has to return a list of
+values, it is usually much simpler to create a generator function than to directly return a
+list. Consider the following example:
+%
+\begin{minted}{python}
+def count(limit):
+    i = 0
+    while i <= limit:
+        yield i
+        i += 1
+
+for num in count(5):
+    print(num)
+\end{minted}
+%
+This will output:\vspace{-5mm}
+%
+\begin{verbatim}
+1
+2
+3
+4
+5
+\end{verbatim}
+%
+When a function has the \texttt{yield} keyword inside it, it automatically becomes a
+generator and can be used in a \texttt{for} loop like in the example. What happens in the
+\texttt{for} loop in the example is the following: When the loop begins, the function is run
+until a \texttt{yield} statement is found. Then, the loop variable (\texttt{i}) is set to
+the value passed to \texttt{yield} statement (which is 0 for the first iteration), and the
+body of the loop is executed. Control is passed back to the generator, and line 5 is
+executed, the generator keeps control until another yield statement is hit (which will be on
+line 4, since we are in a \texttt{while} loop in the generator), and the cycle continues.
+When either a \texttt{return} statement or (in this case) the end of the generator is hit,
+the loop stops.
+
+\subsection{Solver}
 
 The timetables are created using a technique called \emph{constraint programming}.
 Generally, this is a method of finding possible values for a number of variables given a set
@@ -118,7 +163,8 @@ comments explaining it step-by-step.
 \newpage
 \inputminted{python}{solver_listing.py}
 
-\printbibliography[type=software,title={Libraries}]
+\printbibliography[type={software},title={Libraries}]
+\printbibliography[type={online}, title={References}]
 \end{document}
 
 
