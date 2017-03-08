@@ -152,14 +152,29 @@ the file and providing the data in a usable format.
         \hline
         openpyxl.worksheet.Worksheet &worksheet\\
         \hline
-        generator[Subject] &getSubjects()\\
-        Dict[str, List[Subject]] &getSubjects()\\
+        Generator[Subject] &getSubjects()\\
+        Dict[str, List[Subject]] &getStudents(includeTeachers)\\
         \hline
     \end{tabular}
     \label{table:datastore}
 \end{table}
 %
+The \code{worksheet} field stores the data of the excel worksheet as an openpyxl Worksheet
+object. 
 
+The \code{getSubjects} method is a generator returning all the subjects contained in the
+worksheet as \code{Subject} objects:
+\vspace{-3mm}
+\inputminted{python}{datastore_get_subjects.py}
+
+The \code{getStudents} method provides the subjects that each student has selected. This
+information is provided as a dictionary with strings containing the students' names as keys,
+each mapped to a list of \code{Subject} objects, representing the subjects the student is a
+part of. The method also accepts the optional parameter \code{include\_teachers}. If
+\code{True} is passed to this, then the teachers are also included in the output as if they
+were students, with their subjects being the ones that they teach.
+\vspace{-3mm}
+\inputminted{python}{datastore_get_students.py}
 
 \subsection{Solver}
 
