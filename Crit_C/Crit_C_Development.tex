@@ -16,6 +16,7 @@
 ]{hyperref}
 \usepackage{float}
 \usepackage{mdframed}
+\usepackage[textfont=it]{caption}
 \usepackage{listings}
 \usepackage{minted}
     \setminted{
@@ -54,18 +55,16 @@
 
 \section{Structure}
 
-\subsection*{Flowchart}
-
 \begin{figure}[H]
+    \caption{Flowchart}
     \centering
-    \includegraphics[width=\textwidth]{system_flowchart}
+    \includegraphics[height=0.4\textheight]{system_flowchart}
 \end{figure}
-
-\subsection*{Program Structure}
-
+%
 \begin{figure}[H]
+    \caption{Program Structure}
     \label{fig:dir_structure}
-    \includegraphics[width=\textwidth]{directory_structure}
+    \includegraphics[height=0.4\textheight]{directory_structure}
 \end{figure}
 
 In \autoref{fig:dir_structure}, .py files contain python source code, main.ui contains qt
@@ -99,8 +98,10 @@ so, knowledge of them is necessary to understand the function of the program.
 "Generators functions allow you to declare a function that behaves like an iterator, i.e. it
 can be used in a for loop."\autocite{generators}. When a function has to return a list of
 values, it is usually much simpler to create a generator function than to directly return a
-list. Consider the following example:
+list. Consider the following example: \vspace{-6mm}
 %
+\begin{figure}[H]
+    \caption{}\vspace{-6mm}
 \begin{minted}{python}
 def count(limit):
     i = 0
@@ -111,6 +112,7 @@ def count(limit):
 for num in count(5):
     print(num)
 \end{minted}
+\end{figure}
 %
 This will output:\vspace{-5mm}
 %
@@ -135,14 +137,14 @@ the loop stops.
 
 \subsection{Loading and parsing the students' file}
 
-The data the program needs is stored in an Excel file with the following structure:
+%\includegraphics[width=\textwidth]{data_file_structure.png}
 
-\includegraphics[width=\textwidth]{data_file_structure.png}
-
-In the program, the Datastore class (diagram below) is responsible for loading
+In the program, the Datastore class (\autoref{fig:datastore_class}) is responsible for loading
 the file and providing the data in a usable format.
 %
-\begin{table}[H]
+\begin{figure}[H]
+    \caption{}
+    \label{fig:datastore_class}
     \centering
     \def\arraystretch{1.5}
     \begin{tabular}{|l r|}
@@ -157,7 +159,7 @@ the file and providing the data in a usable format.
         \hline
     \end{tabular}
     \label{table:datastore}
-\end{table}
+\end{figure}
 %
 The \code{worksheet} field stores the data of the excel worksheet as an openpyxl Worksheet
 object. 
@@ -165,7 +167,11 @@ object.
 The \code{getSubjects} method is a generator returning all the subjects contained in the
 worksheet as \code{Subject} objects:
 \vspace{-3mm}
-\inputminted{python}{datastore_get_subjects.py}
+\begin{figure}[H]
+    \caption{}
+    \inputminted{python}{datastore_get_subjects.py}
+    \label{fig:get_subjects}
+\end{figure}
 
 The \code{getStudents} method provides the subjects that each student has selected. This
 information is provided as a dictionary with strings containing the students' names as keys,
@@ -174,7 +180,11 @@ part of. The method also accepts the optional parameter \code{include\_teachers}
 \code{True} is passed to this, then the teachers are also included in the output as if they
 were students, with their subjects being the ones that they teach.
 \vspace{-3mm}
-\inputminted{python}{datastore_get_students.py}
+\begin{figure}[H]
+    \caption{}
+    \inputminted{python}{datastore_get_students.py}
+    \label{fig:get_students}
+\end{figure}
 
 \subsection{Solver}
 
@@ -208,10 +218,14 @@ the variables and constraints described. For my program I decided on the followi
 \end{itemize}
 %
 
-Here is the function that handles creating the model and passing it to the solver, with
-comments explaining it step-by-step.
-\newpage
-\inputminted{python}{solver_listing.py}
+In \autoref{fig:solver_func} is the function that handles creating the model and passing it
+to the solver, with comments explaining it step-by-step.
+
+\begin{figure}[H]
+    \caption{}
+    \inputminted{python}{solver_listing.py}
+    \label{fig:solver_func}
+\end{figure}
 
 \printbibliography[type={software},title={Libraries}]
 \printbibliography[type={online}, title={References}]
