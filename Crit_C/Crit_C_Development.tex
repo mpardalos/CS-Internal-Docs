@@ -27,6 +27,8 @@
     }
 \usepackage[svgnames]{xcolor}
 
+\newcommand{\code}[1]{\texttt{\color{Grey}#1}}
+
 \setlength{\parskip}{1em}
 \setlength{\parindent}{0em}
 
@@ -115,15 +117,15 @@ This will output:\vspace{-5mm}
 5
 \end{verbatim}
 %
-When a function has the \texttt{yield} keyword inside it, it automatically becomes a
-generator and can be used in a \texttt{for} loop like in the example. What happens in the
-\texttt{for} loop in the example is the following: When the loop begins, the function is run
-until a \texttt{yield} statement is found. Then, the loop variable (\texttt{i}) is set to
-the value passed to \texttt{yield} statement (which is 0 for the first iteration), and the
+When a function has the \code{yield} keyword inside it, it automatically becomes a
+generator and can be used in a \code{for} loop like in the example. What happens in the
+\code{for} loop in the example is the following: When the loop begins, the function is run
+until a \code{yield} statement is found. Then, the loop variable (\code{i}) is set to
+the value passed to \code{yield} statement (which is 0 for the first iteration), and the
 body of the loop is executed. Control is passed back to the generator, and line 5 is
 executed, the generator keeps control until another yield statement is hit (which will be on
-line 4, since we are in a \texttt{while} loop in the generator), and the cycle continues.
-When either a \texttt{return} statement or (in this case) the end of the generator is hit,
+line 4, since we are in a \code{while} loop in the generator), and the cycle continues.
+When either a \code{return} statement or (in this case) the end of the generator is hit,
 the loop stops.
 
 \subsection{Loading and parsing the students' file}
