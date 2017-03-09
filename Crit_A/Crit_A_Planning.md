@@ -7,9 +7,9 @@ geometry: margin=1in
 
 ## Defining the problem
 
-The **client**, Dr. Venia Papaspyrou, is the director of the IBDP in a school in Athens,
-Greece. At the beginning of each year she is responsible for creating the timetable which
-will be used for the rest of the academic year. 
+The **client**, Dr. Venia Papaspyrou, is the director of the IBDP at my school. At the
+beginning of each year she is responsible for creating the timetable which will be used for
+the rest of the academic year. 
 
 **Currently**, at the beginning of each academic year, she asks each prospective IB1 student
 for their preferred subjects and then manually creates the timetable. This takes a lot of
