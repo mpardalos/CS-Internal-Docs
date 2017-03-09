@@ -1,11 +1,11 @@
 ---
 geometry: margin=1in
+font-size: 12pt
+
+title: Criterion A - Planning 
 ---
 
-
-# Criterion A - Planning 
-
-## Defining the problem
+# Defining the problem
 
 The **client**, Dr. Venia Papaspyrou, is the director of the IBDP at my school. At the
 beginning of each year she is responsible for creating the timetable which will be used for
@@ -17,7 +17,7 @@ time, given the number of students and subjects. It is also error-prone, as it i
 that, for example, some students might end up with overlapping subjects, meaning that
 further adjustments will have to be made. 
 
-## Rationale and proposed solution
+# Rationale and proposed solution
 
 After discussing with the client about her requirements, I decided that the best solution
 would be an application, where she would input the required data (student subject
