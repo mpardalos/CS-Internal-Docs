@@ -1,23 +1,26 @@
----
-geometry: margin=1in
-font-size: 12pt
+\documentclass[a4paper, 12pt]{article}
 
-title: Criterion A - Planning 
----
+\usepackage[margin=1in]{geometry}
 
-# Defining the problem
+\title{Crit A - Planning}
+\date{}
 
-The **client**, Dr. Venia Papaspyrou, is the director of the IBDP at my school. At the
+\begin{document}
+\maketitle
+
+\section{Defining the Problem}
+
+The \emph{client}, Dr. Venia Papaspyrou, is the director of the IBDP at my school. At the
 beginning of each year she is responsible for creating the timetable which will be used for
 the rest of the academic year. 
 
-**Currently**, at the beginning of each academic year, she asks each prospective IB1 student
-for their preferred subjects and then manually creates the timetable. This takes a lot of
-time, given the number of students and subjects. It is also error-prone, as it is possible
-that, for example, some students might end up with overlapping subjects, meaning that
-further adjustments will have to be made. 
+\emph{Currently}, at the beginning of each academic year, she asks each prospective IB1
+student for their preferred subjects and then manually creates the timetable. This takes a
+lot of time, given the number of students and subjects. It is also error-prone, as it is
+possible that, for example, some students might end up with overlapping subjects, meaning
+that further adjustments will have to be made. 
 
-# Rationale and proposed solution
+\section{Rationale and proposed solution}
 
 After discussing with the client about her requirements, I decided that the best solution
 would be an application, where she would input the required data (student subject
@@ -41,13 +44,17 @@ Microsoft Excel spreadsheet containing the final timetable.
 The application will be created in python, mainly because of my familiarity with the
 language as well as its simplicity.
 
-# Success criteria
-1. The timetables produced allow students to attend all subjects they have chosen (i.e. no
-   student has two subjects on the same period)
-2. The input as well as the output of the program is in Microsoft Excel form
-3. The interface is simple and easy to use
-4. The layout of the spreadsheet used for input is intuitive and a skeleton is provided with
-   the program
-5. The output is produced within a reasonable amount of time
-6. The input data is validated and, if there is an error, the user is told which cell it is in
+\section{Success criteria}
 
+\begin{enumerate}
+    \item The timetables produced allow students to attend all subjects they have chosen
+        (i.e. no student has two subjects on the same period)
+    \item The input as well as the output of the program is in Microsoft Excel form                  
+    \item The interface is simple and easy to use
+    \item The layout of the spreadsheet used for input is intuitive and a skeleton is
+        provided with the program
+    \item The output is produced within a reasonable amount of time
+    \item The input data is validated and, if there is an error, the user is told which cell it is in
+\end{enumerate}
+
+\end{document}
