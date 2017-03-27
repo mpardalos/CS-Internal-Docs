@@ -23,6 +23,18 @@ lot of time, given the number of students and subjects. It is also error-prone, 
 possible that, for example, some students might end up with overlapping subjects, meaning
 that further adjustments will have to be made. 
 
+The schedule that will be made has the following characteristics:
+%
+\begin{itemize}
+    \item 4 periods per day, with five schooldays per week
+    \item SL subjects have 2 periods per week and HL subjects have 3
+    \item For some subjects, such as mathematics, standard and higher level are taught as
+        completely different subjects --- students of math SL and math HL never share a
+        classroom for math --- while for others, such as physics, SL and HL have two shared
+        periods, and there is a third period in which only HL participates. 
+\end{itemize}
+%
+
 \section{Rationale and proposed solution}
 
 After discussing with the client about her requirements, I decided that the best solution
@@ -60,6 +72,12 @@ language as well as its simplicity.
     \item The ouput is in Microsoft Excel form
     \item The timetables produced allow students to attend all subjects they have chosen
         (i.e. no student has two subjects on the same period)
+    \item The program can handle each case for subjects with a standard and higher level,
+        meaning:
+        \begin{enumerate}
+            \item completely separate SL and HL classes
+            \item two shared periods of SL and HL and one extra period for HL
+        \end{enumerate}
 \end{enumerate}
 
 \end{document}
