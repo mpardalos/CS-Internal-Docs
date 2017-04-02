@@ -138,7 +138,16 @@ the loop stops.
 
 \subsection{Loading and parsing the students' file}
 
-%\includegraphics[width=\textwidth]{data_file_structure.png}
+\autoref{fig:data_file_structure} shows the structure of the students'. Column A will be
+ignored, and is used for labels.  Then, each column corresponds to a class. The following
+rows contained data as per the labels in column A. If row 4 is empty or 0, the no extra HL
+periods will be scheduled. 
+
+\begin{figure}[H]
+    \caption{}
+    \includegraphics[width=\textwidth]{data_file_structure.png}
+    \label{fig:data_file_structure}
+\end{figure}
 
 In the program, the Datastore class (\autoref{fig:datastore_class}) is responsible for loading
 the file and providing the data in a usable format.
