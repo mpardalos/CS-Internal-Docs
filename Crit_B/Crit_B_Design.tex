@@ -8,6 +8,8 @@
 \setlength{\parskip}{1em}
 \setlength{\parindent}{0em}
 
+\renewcommand\thesection{\hspace{-1em}}
+
 \title{Criterion B - Planning}
 \author{}
 \date{}
@@ -15,14 +17,14 @@
 \begin{document}
 \maketitle
 
-\section*{Flowchart}
+\section{Flowchart}
 %
 \begin{figure}[H]
     \centering
     \includegraphics[width=\textwidth]{system_flowchart}
 \end{figure}
 %
-\section*{GUI}
+\section{GUI}
 
 This will be the GUI of the program. The user will first click on the \textbf{Open Students
 File} button, at which point a file dialog will open for them to select the .xlsx file
@@ -36,14 +38,14 @@ options for the output, such as whether to also consider teachers' schedules whe
     \includegraphics[width=\textwidth]{interface_design}
 \end{figure}
 %
-\section*{Input File structure}
+\section{Input File structure}
 This is the structure of the input file. Column A will be ignored, and is used for labels.
 Then, each column corresponds to a class. The following rows contained data as per the
 labels in column A. If row 4 is empty or 0, the no extra HL periods will be scheduled. 
 
 \includegraphics[width=\textwidth]{data_file_structure.png}
 
-\section*{Testing}
+\section{Testing}
 
 First I am going to test using valid data, namely the data for the class of 2018, to check
 that
