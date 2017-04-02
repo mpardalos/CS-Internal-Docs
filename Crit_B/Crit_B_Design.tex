@@ -9,6 +9,7 @@
 \setlength{\parindent}{0em}
 
 \renewcommand\thesection{\hspace{-1em}}
+\renewcommand\thesubsection{\hspace{-1em}}
 
 \title{Criterion B - Planning}
 \author{}
@@ -38,6 +39,93 @@ options for the output, such as whether to also consider teachers' schedules whe
     \includegraphics[width=\textwidth]{interface_design}
 \end{figure}
 %
+
+\section{Module structure}
+
+\begin{itemize}
+    \item models.py
+        \begin{itemize}
+            \item class \texttt{Datastore}
+            \item class \texttt{Subject}
+        \end{itemize}
+    \item views.py
+        \begin{itemize}
+            \item function \texttt{timetable\_to\_ascii\_table(timetable)}
+            \item function \texttt{timetable\_to\_workbook(timetable, sheet\_name)}
+        \end{itemize}
+    \item interface.py
+        \begin{itemize}
+            \item class \texttt{MainWindow}
+        \end{itemize}
+    \item solver.py
+        \begin{itemize}
+            \item function \texttt{possible\_timetables(students, periods\_per\_week)}
+        \end{itemize}
+\end{itemize}
+
+\subsection{Classes}
+Methods surrounded by underscores (such as \_\_method\_name\_\_) are so-called python
+\emph{magic methods} and are not called directly by my code but are instead used to give
+more functionality to the classes. The \_\_eq\_\_(other) method, for example allows the
+class that implements it to be compared with any other object using the \texttt{==} operator
+in the way defined by the programmer.
+
+%
+\begin{table}[H]
+    \centering
+\begin{tabular}{|l r|}
+    \hline
+    \multicolumn{2}{|c|}{Datastore}\\
+    \hline
+    \hline
+    openpyxl.worksheet.Worksheet & worksheet\\
+    \hline
+    Generator\footnotemark & getSubjects()\\
+    Dict      & getStudents(includeTeachers)\\
+    \hline
+\end{tabular}
+\end{table}
+\footnotetext{to be explained in Development section}
+%
+
+%
+\begin{table}[H]
+    \centering
+\begin{tabular}{|l r|}
+    \hline
+    \multicolumn{2}{|c|}{Subject}\\
+    \hline
+    \hline
+    str & name\\
+    int & periods\_per\_week\\
+    str & teacher name\\
+    \hline
+    bool & \_\_eq\_\_(other)\\
+    int  & \_\_hash\_\_()\\
+    \hline
+\end{tabular}
+\end{table}
+%
+
+
+%
+\begin{table}[H]
+    \centering
+\begin{tabular}{|l r|}
+    \hline
+    \multicolumn{2}{|c|}{MainWindow (Subclass of PyQt.QtWidgets.QMainWindow)}\\
+    \hline
+    \hline              
+    & \\[-0.5em]
+    \hline
+    void & get\_file\_to\_open()\\
+    void & generate\_timetable()\\
+    \hline
+\end{tabular}
+\end{table}
+%
+
+
 \section{Input File structure}
 This is the structure of the input file. Column A will be ignored, and is used for labels.
 Then, each column corresponds to a class. The following rows contained data as per the
