@@ -1,0 +1,51 @@
+\documentclass[a4paper, 12pt]{article}
+
+\usepackage[margin=1in]{geometry}
+
+\title{Criterion E - Evaluation}
+\author{}
+\date{}
+
+\begin{document}
+\maketitle
+
+\section{Meeting the Success Criteria}
+\begin{enumerate}
+    \item The interface is simple and easy to use. - \textbf{Done, only consists of two
+        buttons, and the user did not need any guidance to understand what each does.}
+    \item The input of the program is in Microsoft Excel form. - \textbf{Done.}
+    \item A skeleton of the input spreadsheet is provided with the program. - \textbf{Done.}
+    \item The input data is validated and, if there is an error, the user is told which cell
+        it is in. - \textbf{Both done. When the user used the program she was quickly able to
+        find a missing cell in the data file when she saw the error message.}
+    \item The output is produced within a reasonable amount of time. - \textbf{Done, output
+        is usually produced within a few seconds, though for certain inputs, it may take
+        longer, or even continue running without halting.}
+    \item The output is in Microsoft Excel form. - \textbf{Done.}
+    \item The timetables produced allow students to attend all subjects they have chosen
+        (i.e. no student has two subjects on the same period). - \textbf{Done.}
+\end{enumerate}
+
+\section{Recommendations for future improvement}
+
+While the success criteria were achieved, there are still improvements that could be made to
+the application. The most significant problem found in the application occurred in cases
+where the data provided was too complex for the solver to create a timetable. The program
+would keep on running until the user manually stopped it. This is a problem as the user
+does not know whether the program has frozen or whether it will actually produce a result.
+The simplest solution to this problem would be to add a \emph{timeout} value to the program,
+so that, when the processing takes more than a certain amount of time the user is notified,
+and it is suggested that they quit the program and try a simpler set of data. A better
+solution would be to add a progress bar showing how long the processing will take. This is
+not possible with the constraint solver library used currently, but could be possible with
+an alternative library, or if I were to implement the constraint solving algorithm myself. 
+
+The client has also mentioned that having to move out of Excel to create the timetable is
+somewhat inconviniet, therefore, in order to further improve ease of use, it could also be
+possible to replace the interface of the program with a Microsoft Excel plugin, so that the
+user could start the solver directly from the interface of Excel, without having to open a
+second application. This could be achieved by creating a Microsoft Excel plugin that starts
+the application in the background with the currently open file as input and stores its
+output to a separate worksheet in the file.
+
+\end{document}
