@@ -1,0 +1,61 @@
+\documentclass[12pt]{article}
+
+\usepackage[margin=1in]{geometry}
+\usepackage{graphicx}
+    \graphicspath{{../media/}} 
+
+\setlength{\parskip}{1em}
+\setlength{\parindent}{0em}
+
+\title{Criterion B - Planning}
+\author{}
+\date{}
+
+\begin{document}
+\maketitle
+
+\section*{Input File structure}
+This is the structure of the input file. Column A will be ignored, and is used for labels.
+Then, each column corresponds to a class. The following rows contained data as per the
+labels in column A. If row 4 is empty or 0, the no extra HL periods will be scheduled. 
+
+\includegraphics[width=\textwidth]{data_file_structure.png}
+
+\section*{Testing}
+
+First I am going to test using valid data, namely the data for the class of 2018, to check
+that
+%
+\begin{itemize}
+    \item No student has two subjects scheduled to the same period
+    \item All subjects are scheduled
+    \item Each subject has the correct number of periods
+    \item Subjects that have extra hl periods have had them scheduled
+\end{itemize}
+%
+
+To make testing quicker, I will add functionality to the program to have make it output the
+timetable directly on the command line. Therefore, after the rest of the testing, I will
+also check the Excel output:
+%
+\begin{itemize}
+    \item It can be opened with Microsoft Excel
+    \item It is identical to the terminal output
+\end{itemize}
+%
+
+Afterwards, I will also test using malformed data, to ensure that no invalid output is
+produced. 
+%
+\begin{itemize}
+    \item Empty file, should output an empty table
+    \item Subject with no students, the subject should not be included in the output
+    \item Subject name missing from one column, should output error message pointing to the
+        cell where the name should be
+    \item Number of periods missing for one subject, should output error message pointing to
+        the cell where the number of periods should be
+\end{itemize}
+%
+
+
+\end{document}
