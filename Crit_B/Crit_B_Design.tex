@@ -3,6 +3,7 @@
 \usepackage[margin=1in]{geometry}
 \usepackage{graphicx}
     \graphicspath{{../media/}} 
+\usepackage{float}
 
 \setlength{\parskip}{1em}
 \setlength{\parindent}{0em}
@@ -14,6 +15,13 @@
 \begin{document}
 \maketitle
 
+\section*{Flowchart}
+%
+\begin{figure}[H]
+    \centering
+    \includegraphics[height=0.4\textheight]{system_flowchart}
+\end{figure}
+%
 \section*{Input File structure}
 This is the structure of the input file. Column A will be ignored, and is used for labels.
 Then, each column corresponds to a class. The following rows contained data as per the
