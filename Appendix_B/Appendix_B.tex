@@ -1,0 +1,42 @@
+\documentclass[12pt]{article}
+
+\usepackage[a4paper, margin=1in]{geometry}
+\usepackage{caption}
+\usepackage{fancyvrb}
+\usepackage{graphicx}
+    \graphicspath{{../media/}} 
+\usepackage{float}
+\usepackage[
+    colorlinks,
+    linkcolor=black,
+    citecolor=black,
+    urlcolor=blue
+]{hyperref}
+
+
+\title{Appendix B - Test Results}
+\author{}
+\date{}
+
+\RecustomVerbatimCommand{\VerbatimInput}{VerbatimInput}{
+    fontsize = \footnotesize
+}
+
+\begin{document}
+
+\maketitle
+
+\section{Test with valid data}
+
+\href{./testing_class_of_2018.xlsx}{Input file} (Not included as image because of size}
+
+%
+\begin{figure}[H]
+    \centering
+    \caption*{Output}
+    \includegraphics[width=\textwidth]{valid_data_test.png}
+\end{figure}
+%
+
+
+\end{document}
